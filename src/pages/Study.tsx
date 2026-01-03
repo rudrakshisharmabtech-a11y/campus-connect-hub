@@ -175,8 +175,17 @@ export default function Study() {
                         ))}
                       </div>
 
-                      <a href={tool.link} target="_blank" rel="noopener noreferrer" className="w-full">
-                        <Button variant="gradient" className="w-full">
+                      <a 
+                        href={tool.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="block w-full"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(tool.link, '_blank', 'noopener,noreferrer');
+                        }}
+                      >
+                        <Button variant="gradient" className="w-full pointer-events-none">
                           Open {tool.title}
                         </Button>
                       </a>
@@ -197,12 +206,10 @@ export default function Study() {
                   { title: "Operating Systems Full Course", duration: "3:59:51", views: "980K", thumbnail: "OS", youtubeId: "mXw9ruZaxzQ" },
                   { title: "Computer Networks Complete", duration: "8:01:46", views: "1.5M", thumbnail: "CN", youtubeId: "qiQR5rTSshw" },
                 ].map((video, index) => (
-                  <a
+                  <div
                     key={video.title}
-                    href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-2xl bg-card border border-border shadow-card overflow-hidden group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up block"
+                    onClick={() => window.open(`https://www.youtube.com/watch?v=${video.youtubeId}`, '_blank', 'noopener,noreferrer')}
+                    className="rounded-2xl bg-card border border-border shadow-card overflow-hidden group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up cursor-pointer"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="relative h-40 bg-gradient-to-br from-campus-blue/20 to-campus-purple/20 overflow-hidden">
@@ -233,7 +240,7 @@ export default function Study() {
                         </div>
                       </div>
                     </div>
-                  </a>
+                  </div>
                 ))}
               </div>
             </TabsContent>
