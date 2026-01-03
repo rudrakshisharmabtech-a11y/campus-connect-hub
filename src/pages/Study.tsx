@@ -34,7 +34,7 @@ const studyTools = [
     description: "Digital note-taking with AI-powered organization and search",
     color: "bg-campus-blue",
     features: ["Auto-organize notes", "Search across all notes", "Export to PDF", "Collaborate with peers"],
-    link: "https://notebooklm.google.com/"
+    link: "https://notebooklm.google/"
   },
   {
     id: "ai-summary",
@@ -43,7 +43,7 @@ const studyTools = [
     description: "Get instant summaries from lecture videos and online content",
     color: "bg-campus-purple",
     features: ["YouTube integration", "Key points extraction", "Generate flashcards", "Quiz generation"],
-    link: "https://notebooklm.google.com/"
+    link: "https://notebooklm.google/"
   },
   {
     id: "notes-gen",
@@ -52,7 +52,7 @@ const studyTools = [
     description: "Transform textbooks and PDFs into concise study notes",
     color: "bg-campus-teal",
     features: ["PDF to notes", "Highlight key concepts", "Custom formatting", "Share with classmates"],
-    link: "https://notebooklm.google.com/"
+    link: "https://notebooklm.google/"
   },
   {
     id: "mindmaps",
@@ -61,7 +61,7 @@ const studyTools = [
     description: "Visualize concepts and create interactive mind maps",
     color: "bg-campus-orange",
     features: ["Drag & drop interface", "Auto-layout", "Export as image", "Collaborative editing"],
-    link: "https://notebooklm.google.com/"
+    link: "https://notebooklm.google/"
   }
 ];
 
@@ -199,27 +199,25 @@ export default function Study() {
             <TabsContent value="videos" className="animate-fade-in">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                  { title: "Introduction to Data Structures", duration: "2:09:36", views: "2.3M", thumbnail: "DSA", youtubeId: "8hly31xKli0" },
-                  { title: "Machine Learning Full Course", duration: "11:53:11", views: "5.8M", thumbnail: "ML", youtubeId: "GwIo3gDZCVQ" },
-                  { title: "React JS Full Course", duration: "11:55:27", views: "4.1M", thumbnail: "React", youtubeId: "RVFAyFWO4go" },
-                  { title: "Database Management Systems", duration: "5:32:49", views: "1.2M", thumbnail: "DBMS", youtubeId: "HXV3zeQKqGY" },
-                  { title: "Operating Systems Full Course", duration: "3:59:51", views: "980K", thumbnail: "OS", youtubeId: "mXw9ruZaxzQ" },
-                  { title: "Computer Networks Complete", duration: "8:01:46", views: "1.5M", thumbnail: "CN", youtubeId: "qiQR5rTSshw" },
+                  { title: "Introduction to Data Structures", duration: "2:09:36", views: "2.3M", thumbnail: "DSA" },
+                  { title: "Machine Learning Full Course", duration: "11:53:11", views: "5.8M", thumbnail: "ML" },
+                  { title: "React JS Full Course", duration: "11:55:27", views: "4.1M", thumbnail: "React" },
+                  { title: "Database Management Systems", duration: "5:32:49", views: "1.2M", thumbnail: "DBMS" },
+                  { title: "Operating Systems Full Course", duration: "3:59:51", views: "980K", thumbnail: "OS" },
+                  { title: "Computer Networks Complete", duration: "8:01:46", views: "1.5M", thumbnail: "CN" },
                 ].map((video, index) => (
                   <div
                     key={video.title}
-                    onClick={() => window.open(`https://www.youtube.com/watch?v=${video.youtubeId}`, '_blank', 'noopener,noreferrer')}
+                    onClick={() => window.open('https://www.youtube.com/', '_blank', 'noopener,noreferrer')}
                     className="rounded-2xl bg-card border border-border shadow-card overflow-hidden group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up cursor-pointer"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="relative h-40 bg-gradient-to-br from-campus-blue/20 to-campus-purple/20 overflow-hidden">
-                      <img 
-                        src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
-                        alt={video.title}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="relative h-40 bg-gradient-to-br from-campus-blue/20 to-campus-purple/20 overflow-hidden flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
+                        {video.thumbnail}
+                      </div>
                       <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                        <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all">
                           <Play className="w-6 h-6 text-white fill-white" />
                         </div>
                       </div>
