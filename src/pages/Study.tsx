@@ -33,7 +33,8 @@ const studyTools = [
     title: "Smart Notebook",
     description: "Digital note-taking with AI-powered organization and search",
     color: "bg-campus-blue",
-    features: ["Auto-organize notes", "Search across all notes", "Export to PDF", "Collaborate with peers"]
+    features: ["Auto-organize notes", "Search across all notes", "Export to PDF", "Collaborate with peers"],
+    link: "https://notebooklm.google.com/"
   },
   {
     id: "ai-summary",
@@ -41,7 +42,8 @@ const studyTools = [
     title: "AI Video Summarizer",
     description: "Get instant summaries from lecture videos and online content",
     color: "bg-campus-purple",
-    features: ["YouTube integration", "Key points extraction", "Generate flashcards", "Quiz generation"]
+    features: ["YouTube integration", "Key points extraction", "Generate flashcards", "Quiz generation"],
+    link: "https://notebooklm.google.com/"
   },
   {
     id: "notes-gen",
@@ -49,7 +51,8 @@ const studyTools = [
     title: "Notes Generator",
     description: "Transform textbooks and PDFs into concise study notes",
     color: "bg-campus-teal",
-    features: ["PDF to notes", "Highlight key concepts", "Custom formatting", "Share with classmates"]
+    features: ["PDF to notes", "Highlight key concepts", "Custom formatting", "Share with classmates"],
+    link: "https://notebooklm.google.com/"
   },
   {
     id: "mindmaps",
@@ -57,7 +60,8 @@ const studyTools = [
     title: "Mind Map Creator",
     description: "Visualize concepts and create interactive mind maps",
     color: "bg-campus-orange",
-    features: ["Drag & drop interface", "Auto-layout", "Export as image", "Collaborative editing"]
+    features: ["Drag & drop interface", "Auto-layout", "Export as image", "Collaborative editing"],
+    link: "https://notebooklm.google.com/"
   }
 ];
 
@@ -171,9 +175,11 @@ export default function Study() {
                         ))}
                       </div>
 
-                      <Button variant="gradient" className="w-full">
-                        Open {tool.title}
-                      </Button>
+                      <a href={tool.link} target="_blank" rel="noopener noreferrer" className="w-full">
+                        <Button variant="gradient" className="w-full">
+                          Open {tool.title}
+                        </Button>
+                      </a>
                     </div>
                   );
                 })}
@@ -184,25 +190,30 @@ export default function Study() {
             <TabsContent value="videos" className="animate-fade-in">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                  { title: "Introduction to Data Structures", duration: "45:32", views: "2.3K", thumbnail: "DSA" },
-                  { title: "Machine Learning Basics", duration: "1:02:15", views: "1.8K", thumbnail: "ML" },
-                  { title: "Web Development with React", duration: "38:45", views: "3.1K", thumbnail: "React" },
-                  { title: "Database Management Systems", duration: "52:20", views: "1.2K", thumbnail: "DBMS" },
-                  { title: "Operating Systems Concepts", duration: "47:18", views: "980", thumbnail: "OS" },
-                  { title: "Computer Networks Explained", duration: "55:40", views: "1.5K", thumbnail: "CN" },
+                  { title: "Introduction to Data Structures", duration: "2:09:36", views: "2.3M", thumbnail: "DSA", youtubeId: "8hly31xKli0" },
+                  { title: "Machine Learning Full Course", duration: "11:53:11", views: "5.8M", thumbnail: "ML", youtubeId: "GwIo3gDZCVQ" },
+                  { title: "React JS Full Course", duration: "11:55:27", views: "4.1M", thumbnail: "React", youtubeId: "RVFAyFWO4go" },
+                  { title: "Database Management Systems", duration: "5:32:49", views: "1.2M", thumbnail: "DBMS", youtubeId: "HXV3zeQKqGY" },
+                  { title: "Operating Systems Full Course", duration: "3:59:51", views: "980K", thumbnail: "OS", youtubeId: "mXw9ruZaxzQ" },
+                  { title: "Computer Networks Complete", duration: "8:01:46", views: "1.5M", thumbnail: "CN", youtubeId: "qiQR5rTSshw" },
                 ].map((video, index) => (
-                  <div
+                  <a
                     key={video.title}
-                    className="rounded-2xl bg-card border border-border shadow-card overflow-hidden group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up"
+                    href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-2xl bg-card border border-border shadow-card overflow-hidden group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up block"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="relative h-40 bg-gradient-to-br from-campus-blue/20 to-campus-purple/20 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
-                        {video.thumbnail}
-                      </div>
-                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-primary-foreground/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Play className="w-6 h-6 text-primary fill-primary" />
+                    <div className="relative h-40 bg-gradient-to-br from-campus-blue/20 to-campus-purple/20 overflow-hidden">
+                      <img 
+                        src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                        alt={video.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                          <Play className="w-6 h-6 text-white fill-white" />
                         </div>
                       </div>
                       <div className="absolute bottom-2 right-2 px-2 py-1 rounded bg-foreground/80 text-primary-foreground text-xs font-medium">
@@ -210,7 +221,7 @@ export default function Study() {
                       </div>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold mb-2 line-clamp-2">{video.title}</h3>
+                      <h3 className="font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors">{video.title}</h3>
                       <div className="flex items-center justify-between text-sm text-muted-foreground">
                         <div className="flex items-center gap-1">
                           <Clock className="w-4 h-4" />
@@ -221,18 +232,8 @@ export default function Study() {
                           {video.views} views
                         </div>
                       </div>
-                      <div className="flex gap-2 mt-4">
-                        <Button variant="outline" size="sm" className="flex-1">
-                          <Download className="w-4 h-4" />
-                          Save
-                        </Button>
-                        <Button variant="gradient" size="sm" className="flex-1">
-                          <Brain className="w-4 h-4" />
-                          Summarize
-                        </Button>
-                      </div>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             </TabsContent>

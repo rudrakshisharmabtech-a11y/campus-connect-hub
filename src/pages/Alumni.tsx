@@ -69,8 +69,12 @@ export default function Alumni() {
                   <div className="flex items-center gap-2 text-sm"><Award className="w-4 h-4 text-campus-yellow" /><span>{alumni.achievement}</span></div>
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm" className="flex-1"><Linkedin className="w-4 h-4" />Connect</Button>
-                  <Button variant="gradient" size="sm" className="flex-1"><Mail className="w-4 h-4" />Message</Button>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button variant="outline" size="sm" className="w-full"><Linkedin className="w-4 h-4" />Connect</Button>
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button variant="gradient" size="sm" className="w-full"><Mail className="w-4 h-4" />Message</Button>
+                  </a>
                 </div>
               </div>
             ))}

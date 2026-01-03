@@ -102,54 +102,29 @@ export default function CampusMap() {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="bg-card rounded-3xl border border-border shadow-card overflow-hidden">
-            {/* Interactive Map Placeholder */}
-            <div className="relative h-[600px] bg-gradient-to-br from-campus-green/10 via-campus-teal/5 to-campus-blue/10">
-              {/* Campus Map Grid Background */}
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: `
-                  linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-                `,
-                backgroundSize: '40px 40px'
-              }} />
+            {/* Google Maps Embed - Stanford University Campus */}
+            <div className="relative h-[600px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.2833035478!2d-122.17132492370088!3d37.42761473392493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb2a9eda7f25%3A0x89e8e41f8e51c0f0!2sStanford%20University!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="University Campus Map"
+                className="absolute inset-0"
+              />
               
-              {/* Campus Outline */}
-              <div className="absolute inset-8 border-2 border-dashed border-muted-foreground/30 rounded-3xl" />
-              
-              {/* Map Title */}
-              <div className="absolute top-4 left-4 px-4 py-2 bg-card/90 backdrop-blur-sm rounded-lg border border-border shadow-sm">
+              {/* Map Overlay Title */}
+              <div className="absolute top-4 left-4 px-4 py-2 bg-card/95 backdrop-blur-sm rounded-lg border border-border shadow-lg z-10">
                 <h3 className="font-display font-bold text-lg">University Campus Map</h3>
-                <p className="text-sm text-muted-foreground">Click on locations to learn more</p>
+                <p className="text-sm text-muted-foreground">Explore our beautiful campus</p>
               </div>
               
-              {/* Location Markers */}
-              {locations.map((location, index) => {
-                const Icon = location.icon;
-                return (
-                  <div
-                    key={location.name}
-                    className="absolute animate-scale-in group cursor-pointer"
-                    style={{ 
-                      top: location.position.top, 
-                      left: location.position.left,
-                      animationDelay: `${index * 0.1}s`
-                    }}
-                  >
-                    <div className={`w-12 h-12 rounded-xl ${location.color} flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-glow`}>
-                      <Icon className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1.5 bg-card rounded-lg border border-border shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                      <p className="font-medium text-sm">{location.name}</p>
-                    </div>
-                    {/* Pulse Ring */}
-                    <div className={`absolute inset-0 -m-1 rounded-xl ${location.color} opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
-                  </div>
-                );
-              })}
-              
               {/* Map Legend */}
-              <div className="absolute bottom-4 right-4 p-4 bg-card/95 backdrop-blur-sm rounded-xl border border-border shadow-lg">
-                <h4 className="font-semibold mb-3">Campus Locations</h4>
+              <div className="absolute bottom-4 right-4 p-4 bg-card/95 backdrop-blur-sm rounded-xl border border-border shadow-lg z-10">
+                <h4 className="font-semibold mb-3">Key Locations</h4>
                 <div className="grid grid-cols-2 gap-2">
                   {locations.map((location) => {
                     const Icon = location.icon;
@@ -163,15 +138,6 @@ export default function CampusMap() {
                     );
                   })}
                 </div>
-              </div>
-              
-              {/* Upload Map Placeholder */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-                <div className="w-24 h-24 rounded-2xl bg-muted flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-12 h-12 text-muted-foreground" />
-                </div>
-                <p className="text-muted-foreground">Your campus map will appear here</p>
-                <p className="text-sm text-muted-foreground/70">Upload your university map to customize</p>
               </div>
             </div>
           </div>
@@ -238,10 +204,17 @@ export default function CampusMap() {
                   </a>
                 </div>
                 
-                <Button variant="outline" size="sm" className="w-full mt-4">
-                  <MessageCircle className="w-4 h-4" />
-                  Send Message
-                </Button>
+                <a 
+                  href={`https://${senior.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full mt-4 inline-block"
+                >
+                  <Button variant="outline" size="sm" className="w-full">
+                    <MessageCircle className="w-4 h-4" />
+                    Send Message
+                  </Button>
+                </a>
               </div>
             ))}
           </div>
