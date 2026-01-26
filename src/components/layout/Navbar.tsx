@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, GraduationCap, Home, Map, BookOpen, Users, Info } from "lucide-react";
+import { Menu, X, GraduationCap, Home, Map, BookOpen, Users, Info, Briefcase, FlaskConical } from "lucide-react";
 
 const navItems = [
   { path: "/", label: "Home", icon: Home },
   { path: "/campus-map", label: "Campus Map", icon: Map },
   { path: "/study", label: "Study", icon: BookOpen },
+  { path: "/internship", label: "Internships", icon: Briefcase },
+  { path: "/research-hub", label: "Research Hub", icon: FlaskConical },
   { path: "/about", label: "About", icon: Info },
   { path: "/alumni", label: "Alumni", icon: Users },
 ];

@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   BookOpen,
@@ -15,7 +16,6 @@ import {
   Gamepad2,
   Sparkles,
   Play,
-  Download,
   Share2,
   Star,
   Clock,
@@ -23,7 +23,36 @@ import {
   Target,
   Medal,
   Flame,
-  Crown
+  Crown,
+  Calendar,
+  Heart,
+  Smile,
+  Sun,
+  Moon,
+  Cloud,
+  Coffee,
+  PenTool,
+  Map,
+  Code,
+  Scale,
+  Microscope,
+  Palette,
+  Music,
+  Building,
+  Cpu,
+  Database,
+  Globe,
+  Rocket,
+  GraduationCap,
+  Briefcase,
+  FlaskConical,
+  Stethoscope,
+  Calculator,
+  BookMarked,
+  PartyPopper,
+  Flag,
+  Gift,
+  Award
 } from "lucide-react";
 
 const studyTools = [
@@ -79,8 +108,99 @@ const achievements = [
   { icon: Crown, title: "Top Learner", description: "Reach top 10 leaderboard", progress: 0, total: 1, color: "text-campus-purple" },
 ];
 
+const roadmapCategories = [
+  { name: "Frontend Development", icon: Globe, color: "bg-gradient-to-br from-blue-400 to-cyan-400", path: "frontend" },
+  { name: "Backend Development", icon: Database, color: "bg-gradient-to-br from-green-400 to-emerald-400", path: "backend" },
+  { name: "Full Stack", icon: Code, color: "bg-gradient-to-br from-purple-400 to-pink-400", path: "full-stack" },
+  { name: "DevOps", icon: Rocket, color: "bg-gradient-to-br from-orange-400 to-red-400", path: "devops" },
+  { name: "AI & ML", icon: Brain, color: "bg-gradient-to-br from-violet-400 to-purple-400", path: "ai-data-scientist" },
+  { name: "Data Science", icon: Calculator, color: "bg-gradient-to-br from-teal-400 to-cyan-400", path: "data-analyst" },
+  { name: "Cyber Security", icon: Cpu, color: "bg-gradient-to-br from-red-400 to-rose-400", path: "cyber-security" },
+  { name: "Blockchain", icon: Network, color: "bg-gradient-to-br from-yellow-400 to-orange-400", path: "blockchain" },
+  { name: "Mobile Development", icon: Briefcase, color: "bg-gradient-to-br from-pink-400 to-rose-400", path: "android" },
+  { name: "Game Development", icon: Gamepad2, color: "bg-gradient-to-br from-indigo-400 to-blue-400", path: "game-developer" },
+  { name: "Law Studies", icon: Scale, color: "bg-gradient-to-br from-amber-400 to-yellow-400", path: "legal" },
+  { name: "Medical Science", icon: Stethoscope, color: "bg-gradient-to-br from-red-400 to-pink-400", path: "medical" },
+  { name: "Physics", icon: FlaskConical, color: "bg-gradient-to-br from-blue-400 to-indigo-400", path: "physics" },
+  { name: "Chemistry", icon: Microscope, color: "bg-gradient-to-br from-green-400 to-teal-400", path: "chemistry" },
+  { name: "Design & UX", icon: Palette, color: "bg-gradient-to-br from-pink-400 to-purple-400", path: "ux-design" },
+  { name: "Product Management", icon: Building, color: "bg-gradient-to-br from-slate-400 to-gray-400", path: "product-manager" },
+];
+
+const videosList = [
+  { title: "Introduction to Data Structures", duration: "2:09:36", views: "2.3M", thumbnail: "DSA", youtubeUrl: "https://www.youtube.com/watch?v=8hly31xKli0" },
+  { title: "Machine Learning Full Course", duration: "11:53:11", views: "5.8M", thumbnail: "ML", youtubeUrl: "https://www.youtube.com/watch?v=GwIo3gDZCVQ" },
+  { title: "React JS Full Course", duration: "11:55:27", views: "4.1M", thumbnail: "React", youtubeUrl: "https://www.youtube.com/watch?v=bMknfKXIFA8" },
+  { title: "Database Management Systems", duration: "5:32:49", views: "1.2M", thumbnail: "DBMS", youtubeUrl: "https://www.youtube.com/watch?v=HXV3zeQKqGY" },
+  { title: "Operating Systems Full Course", duration: "3:59:51", views: "980K", thumbnail: "OS", youtubeUrl: "https://www.youtube.com/watch?v=vBURTt97EkA" },
+  { title: "Computer Networks Complete", duration: "8:01:46", views: "1.5M", thumbnail: "CN", youtubeUrl: "https://www.youtube.com/watch?v=qiQR5rTSshw" },
+];
+
+const eventCalendarData = [
+  { date: "Jan 14, 2026", event: "Makar Sankranti Celebration", type: "festival", color: "bg-orange-400" },
+  { date: "Jan 26, 2026", event: "Republic Day", type: "national", color: "bg-green-500" },
+  { date: "Mar 14, 2026", event: "Holi Festival", type: "festival", color: "bg-pink-400" },
+  { date: "Apr 14, 2026", event: "Baisakhi", type: "festival", color: "bg-yellow-400" },
+  { date: "Aug 15, 2026", event: "Independence Day", type: "national", color: "bg-orange-500" },
+  { date: "Oct 2, 2026", event: "Gandhi Jayanti", type: "national", color: "bg-blue-400" },
+  { date: "Oct 12, 2026", event: "Dussehra", type: "festival", color: "bg-red-400" },
+  { date: "Nov 1, 2026", event: "Diwali", type: "festival", color: "bg-yellow-500" },
+  { date: "Dec 25, 2026", event: "Christmas", type: "festival", color: "bg-red-500" },
+];
+
+const academicCalendarData = [
+  { date: "Feb 15-17, 2026", event: "Mid-Semester Exams", type: "exam", color: "bg-red-400" },
+  { date: "Mar 5-7, 2026", event: "Hackathon Week", type: "hackathon", color: "bg-purple-500" },
+  { date: "Apr 1-30, 2026", event: "Internship Drive", type: "placement", color: "bg-blue-500" },
+  { date: "May 1-15, 2026", event: "End Semester Exams", type: "exam", color: "bg-red-500" },
+  { date: "Jul 20-22, 2026", event: "Viva Voce", type: "viva", color: "bg-orange-400" },
+  { date: "Aug 1-31, 2026", event: "Campus Placements", type: "placement", color: "bg-green-500" },
+  { date: "Sep 10, 2026", event: "Research Symposium", type: "research", color: "bg-teal-500" },
+  { date: "Nov 15-17, 2026", event: "Technical Festival", type: "event", color: "bg-pink-500" },
+];
+
+const hackathonCalendarData = [
+  { name: "HackMIT 2026", date: "Feb 15-16, 2026", location: "MIT, USA", prize: "$10,000", link: "https://hackmit.org/" },
+  { name: "Smart India Hackathon", date: "Mar 1-2, 2026", location: "India (Virtual)", prize: "₹1,00,000", link: "https://www.sih.gov.in/" },
+  { name: "Google Code Jam", date: "Apr 5, 2026", location: "Online", prize: "$15,000", link: "https://codingcompetitions.withgoogle.com/codejam" },
+  { name: "Facebook Hacker Cup", date: "May 10, 2026", location: "Online", prize: "$20,000", link: "https://www.facebook.com/codingcompetitions/hacker-cup" },
+  { name: "HackIndia 2026", date: "Jun 20-21, 2026", location: "Delhi, India", prize: "₹5,00,000", link: "https://hackindia.xyz/" },
+  { name: "ETHGlobal India", date: "Aug 8-10, 2026", location: "Bangalore", prize: "$50,000", link: "https://ethglobal.com/" },
+  { name: "Microsoft Imagine Cup", date: "Sep 15, 2026", location: "Global", prize: "$100,000", link: "https://imaginecup.microsoft.com/" },
+  { name: "AngelHack Global", date: "Oct 5-6, 2026", location: "Multiple Cities", prize: "$25,000", link: "https://angelhack.com/" },
+  { name: "Junction 2026", date: "Nov 8-10, 2026", location: "Helsinki, Finland", prize: "€15,000", link: "https://www.junction.tech/" },
+  { name: "NASA Space Apps", date: "Dec 1-2, 2026", location: "Global", prize: "Special Awards", link: "https://www.spaceappschallenge.org/" },
+];
+
+const games = [
+  { name: "CodinGame", description: "Learn coding through fun games and challenges", icon: Code, color: "bg-gradient-to-br from-green-400 to-emerald-500", link: "https://www.codingame.com/start/" },
+  { name: "NASA Space Place", description: "Explore space and science through interactive games", icon: Rocket, color: "bg-gradient-to-br from-blue-400 to-indigo-500", link: "https://spaceplace.nasa.gov/menu/play/" },
+  { name: "Open Law Lab", description: "Learn law through interactive simulations", icon: Scale, color: "bg-gradient-to-br from-amber-400 to-orange-500", link: "https://www.openlawlab.com/project-topics/learning-law-better/" },
+  { name: "BioMediZone", description: "Medical games for healthcare students", icon: Stethoscope, color: "bg-gradient-to-br from-red-400 to-pink-500", link: "https://www.biomedizone.org/resources/medical-games" },
+];
+
+const moodEmojis = [
+  { emoji: "😊", label: "Happy", color: "bg-yellow-100 hover:bg-yellow-200" },
+  { emoji: "😐", label: "Neutral", color: "bg-gray-100 hover:bg-gray-200" },
+  { emoji: "😢", label: "Sad", color: "bg-blue-100 hover:bg-blue-200" },
+  { emoji: "😴", label: "Tired", color: "bg-purple-100 hover:bg-purple-200" },
+  { emoji: "🤩", label: "Excited", color: "bg-pink-100 hover:bg-pink-200" },
+  { emoji: "😰", label: "Stressed", color: "bg-red-100 hover:bg-red-200" },
+];
+
 export default function Study() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [diaryEntry, setDiaryEntry] = useState("");
+  const [selectedMood, setSelectedMood] = useState("");
+  const [plannerTasks, setPlannerTasks] = useState<string[]>([]);
+  const [newTask, setNewTask] = useState("");
+
+  const addTask = () => {
+    if (newTask.trim()) {
+      setPlannerTasks([...plannerTasks, newTask]);
+      setNewTask("");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -126,21 +246,33 @@ export default function Study() {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="tools" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12 h-14">
-              <TabsTrigger value="tools" className="text-sm md:text-base gap-2">
-                <Brain className="w-4 h-4 hidden sm:block" />
+            <TabsList className="flex flex-wrap justify-center gap-2 mb-12 h-auto bg-transparent">
+              <TabsTrigger value="tools" className="text-sm gap-2 bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 py-2">
+                <Brain className="w-4 h-4" />
                 Study Tools
               </TabsTrigger>
-              <TabsTrigger value="videos" className="text-sm md:text-base gap-2">
-                <Video className="w-4 h-4 hidden sm:block" />
+              <TabsTrigger value="videos" className="text-sm gap-2 bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 py-2">
+                <Video className="w-4 h-4" />
                 Videos
               </TabsTrigger>
-              <TabsTrigger value="groups" className="text-sm md:text-base gap-2">
-                <Users className="w-4 h-4 hidden sm:block" />
+              <TabsTrigger value="diary" className="text-sm gap-2 bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 py-2">
+                <PenTool className="w-4 h-4" />
+                Campus Diary
+              </TabsTrigger>
+              <TabsTrigger value="roadmap" className="text-sm gap-2 bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 py-2">
+                <Map className="w-4 h-4" />
+                Roadmap Maker
+              </TabsTrigger>
+              <TabsTrigger value="calendar" className="text-sm gap-2 bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 py-2">
+                <Calendar className="w-4 h-4" />
+                Event Calendar
+              </TabsTrigger>
+              <TabsTrigger value="groups" className="text-sm gap-2 bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 py-2">
+                <Users className="w-4 h-4" />
                 Groups
               </TabsTrigger>
-              <TabsTrigger value="gamification" className="text-sm md:text-base gap-2">
-                <Gamepad2 className="w-4 h-4 hidden sm:block" />
+              <TabsTrigger value="gamification" className="text-sm gap-2 bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 py-2">
+                <Gamepad2 className="w-4 h-4" />
                 Rewards
               </TabsTrigger>
             </TabsList>
@@ -180,12 +312,8 @@ export default function Study() {
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="block w-full"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(tool.link, '_blank', 'noopener,noreferrer');
-                        }}
                       >
-                        <Button variant="gradient" className="w-full pointer-events-none">
+                        <Button variant="gradient" className="w-full">
                           Open {tool.title}
                         </Button>
                       </a>
@@ -198,18 +326,13 @@ export default function Study() {
             {/* Videos Tab */}
             <TabsContent value="videos" className="animate-fade-in">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { title: "Introduction to Data Structures", duration: "2:09:36", views: "2.3M", thumbnail: "DSA" },
-                  { title: "Machine Learning Full Course", duration: "11:53:11", views: "5.8M", thumbnail: "ML" },
-                  { title: "React JS Full Course", duration: "11:55:27", views: "4.1M", thumbnail: "React" },
-                  { title: "Database Management Systems", duration: "5:32:49", views: "1.2M", thumbnail: "DBMS" },
-                  { title: "Operating Systems Full Course", duration: "3:59:51", views: "980K", thumbnail: "OS" },
-                  { title: "Computer Networks Complete", duration: "8:01:46", views: "1.5M", thumbnail: "CN" },
-                ].map((video, index) => (
-                  <div
+                {videosList.map((video, index) => (
+                  <a
                     key={video.title}
-                    onClick={() => window.open('https://www.youtube.com/', '_blank', 'noopener,noreferrer')}
-                    className="rounded-2xl bg-card border border-border shadow-card overflow-hidden group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up cursor-pointer"
+                    href={video.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-2xl bg-card border border-border shadow-card overflow-hidden group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up cursor-pointer block"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="relative h-40 bg-gradient-to-br from-campus-blue/20 to-campus-purple/20 overflow-hidden flex items-center justify-center">
@@ -238,8 +361,260 @@ export default function Study() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 ))}
+              </div>
+            </TabsContent>
+
+            {/* Campus Diary Tab */}
+            <TabsContent value="diary" className="animate-fade-in">
+              <div className="max-w-4xl mx-auto">
+                {/* Cute Header */}
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 border-2 border-pink-200 mb-4">
+                    <span className="text-4xl">📔</span>
+                    <h2 className="text-2xl font-display font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                      My Campus Diary
+                    </h2>
+                    <span className="text-4xl">✨</span>
+                  </div>
+                  <p className="text-muted-foreground">Your personal space to reflect and plan your campus journey</p>
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-6">
+                  {/* Daily Journal */}
+                  <div className="p-6 rounded-3xl bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 border-2 border-green-200 shadow-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-3xl">🌸</span>
+                      <h3 className="text-xl font-display font-bold text-green-700">Today's Entry</h3>
+                    </div>
+                    
+                    {/* Mood Selector */}
+                    <div className="mb-4">
+                      <label className="text-sm font-medium text-gray-600 mb-2 block">How are you feeling today?</label>
+                      <div className="flex flex-wrap gap-2">
+                        {moodEmojis.map((mood) => (
+                          <button
+                            key={mood.label}
+                            onClick={() => setSelectedMood(mood.label)}
+                            className={`px-3 py-2 rounded-full text-lg transition-all ${mood.color} ${selectedMood === mood.label ? 'ring-2 ring-purple-400 scale-110' : ''}`}
+                          >
+                            {mood.emoji}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Journal Entry */}
+                    <Textarea
+                      placeholder="✏️ Write about your day... What did you learn? Who did you meet? What made you smile?"
+                      value={diaryEntry}
+                      onChange={(e) => setDiaryEntry(e.target.value)}
+                      className="min-h-[150px] bg-white/70 border-2 border-pink-200 rounded-2xl resize-none focus:border-purple-400"
+                    />
+
+                    <div className="flex items-center justify-between mt-4">
+                      <div className="flex gap-2">
+                        <span className="text-2xl cursor-pointer hover:scale-125 transition-transform">🌟</span>
+                        <span className="text-2xl cursor-pointer hover:scale-125 transition-transform">📷</span>
+                        <span className="text-2xl cursor-pointer hover:scale-125 transition-transform">🎵</span>
+                      </div>
+                      <Button className="bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white rounded-full px-6">
+                        <Heart className="w-4 h-4 mr-2" />
+                        Save Entry
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Daily Planner */}
+                  <div className="p-6 rounded-3xl bg-gradient-to-br from-pink-50 via-yellow-50 to-green-50 border-2 border-pink-200 shadow-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-3xl">📋</span>
+                      <h3 className="text-xl font-display font-bold text-pink-700">Daily Planner</h3>
+                    </div>
+
+                    {/* Add Task */}
+                    <div className="flex gap-2 mb-4">
+                      <Input
+                        placeholder="Add a task for tomorrow..."
+                        value={newTask}
+                        onChange={(e) => setNewTask(e.target.value)}
+                        onKeyPress={(e) => e.key === 'Enter' && addTask()}
+                        className="bg-white/70 border-2 border-yellow-200 rounded-xl"
+                      />
+                      <Button onClick={addTask} className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white rounded-xl">
+                        Add
+                      </Button>
+                    </div>
+
+                    {/* Task List */}
+                    <div className="space-y-2 max-h-[200px] overflow-y-auto">
+                      {plannerTasks.length === 0 ? (
+                        <div className="text-center py-8 text-gray-400">
+                          <span className="text-4xl mb-2 block">🌈</span>
+                          <p>No tasks yet! Plan your day ahead</p>
+                        </div>
+                      ) : (
+                        plannerTasks.map((task, index) => (
+                          <div key={index} className="flex items-center gap-3 p-3 bg-white/70 rounded-xl border border-green-200">
+                            <input type="checkbox" className="w-5 h-5 rounded-full accent-green-500" />
+                            <span className="flex-1">{task}</span>
+                            <span className="text-xl">✨</span>
+                          </div>
+                        ))
+                      )}
+                    </div>
+
+                    {/* Time Blocks */}
+                    <div className="mt-4 pt-4 border-t-2 border-dashed border-pink-200">
+                      <h4 className="font-semibold text-pink-600 mb-2 flex items-center gap-2">
+                        <Clock className="w-4 h-4" /> Time Blocks
+                      </h4>
+                      <div className="grid grid-cols-2 gap-2 text-sm">
+                        <div className="p-2 bg-yellow-100 rounded-lg flex items-center gap-2">
+                          <Sun className="w-4 h-4 text-yellow-600" /> Morning Study
+                        </div>
+                        <div className="p-2 bg-blue-100 rounded-lg flex items-center gap-2">
+                          <Cloud className="w-4 h-4 text-blue-600" /> Afternoon Class
+                        </div>
+                        <div className="p-2 bg-orange-100 rounded-lg flex items-center gap-2">
+                          <Coffee className="w-4 h-4 text-orange-600" /> Evening Break
+                        </div>
+                        <div className="p-2 bg-purple-100 rounded-lg flex items-center gap-2">
+                          <Moon className="w-4 h-4 text-purple-600" /> Night Review
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Cute Characters */}
+                <div className="flex justify-center gap-8 mt-8">
+                  <div className="text-center">
+                    <div className="text-6xl animate-bounce">🐱</div>
+                    <p className="text-sm text-gray-500 mt-2">Study Buddy</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🐶</div>
+                    <p className="text-sm text-gray-500 mt-2">Motivation Pal</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-6xl animate-bounce" style={{ animationDelay: '0.4s' }}>🐰</div>
+                    <p className="text-sm text-gray-500 mt-2">Focus Friend</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-6xl animate-bounce" style={{ animationDelay: '0.6s' }}>🦊</div>
+                    <p className="text-sm text-gray-500 mt-2">Clever Helper</p>
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Roadmap Maker Tab */}
+            <TabsContent value="roadmap" className="animate-fade-in">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-display font-bold mb-2">Career Roadmap Maker</h2>
+                <p className="text-muted-foreground">Choose your field and get a detailed learning roadmap</p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {roadmapCategories.map((category, index) => {
+                  const Icon = category.icon;
+                  return (
+                    <a
+                      key={category.name}
+                      href={`https://roadmap.sh/${category.path}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group animate-slide-up"
+                      style={{ animationDelay: `${index * 0.05}s` }}
+                    >
+                      <div className={`p-6 rounded-2xl ${category.color} text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 cursor-pointer`}>
+                        <div className="flex flex-col items-center text-center">
+                          <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <Icon className="w-8 h-8" />
+                          </div>
+                          <h3 className="font-semibold text-sm">{category.name}</h3>
+                        </div>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </TabsContent>
+
+            {/* Event Calendar Tab */}
+            <TabsContent value="calendar" className="animate-fade-in">
+              <div className="grid lg:grid-cols-3 gap-6">
+                {/* Festival Calendar */}
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 shadow-lg">
+                  <div className="flex items-center gap-3 mb-6">
+                    <PartyPopper className="w-6 h-6 text-orange-500" />
+                    <h3 className="text-xl font-display font-bold text-orange-700">Festival & Events</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {eventCalendarData.map((event, index) => (
+                      <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div className={`w-3 h-3 rounded-full ${event.color}`} />
+                        <div className="flex-1">
+                          <p className="font-medium text-sm">{event.event}</p>
+                          <p className="text-xs text-gray-500">{event.date}</p>
+                        </div>
+                        <Gift className="w-4 h-4 text-orange-400" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Academic Calendar */}
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 shadow-lg">
+                  <div className="flex items-center gap-3 mb-6">
+                    <GraduationCap className="w-6 h-6 text-blue-500" />
+                    <h3 className="text-xl font-display font-bold text-blue-700">Academic Calendar</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {academicCalendarData.map((event, index) => (
+                      <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div className={`w-3 h-3 rounded-full ${event.color}`} />
+                        <div className="flex-1">
+                          <p className="font-medium text-sm">{event.event}</p>
+                          <p className="text-xs text-gray-500">{event.date}</p>
+                        </div>
+                        <Flag className="w-4 h-4 text-blue-400" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Hackathon Calendar */}
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 shadow-lg">
+                  <div className="flex items-center gap-3 mb-6">
+                    <Rocket className="w-6 h-6 text-purple-500" />
+                    <h3 className="text-xl font-display font-bold text-purple-700">Hackathon Calendar 2026</h3>
+                  </div>
+                  <div className="space-y-3 max-h-[400px] overflow-y-auto">
+                    {hackathonCalendarData.map((hackathon, index) => (
+                      <div key={index} className="p-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div className="flex items-start justify-between mb-2">
+                          <h4 className="font-semibold text-sm text-purple-700">{hackathon.name}</h4>
+                          <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">{hackathon.prize}</span>
+                        </div>
+                        <p className="text-xs text-gray-500 mb-1">📅 {hackathon.date}</p>
+                        <p className="text-xs text-gray-500 mb-2">📍 {hackathon.location}</p>
+                        <a 
+                          href={hackathon.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-block"
+                        >
+                          <Button size="sm" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs h-7 rounded-full">
+                            Apply Now
+                          </Button>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </TabsContent>
 
@@ -295,7 +670,7 @@ export default function Study() {
               </div>
             </TabsContent>
 
-            {/* Gamification Tab */}
+            {/* Gamification/Rewards Tab */}
             <TabsContent value="gamification" className="animate-fade-in">
               <div className="grid lg:grid-cols-3 gap-8">
                 {/* Stats Overview */}
@@ -317,6 +692,41 @@ export default function Study() {
                             </div>
                             <div className="text-2xl font-display font-bold">{stat.value}</div>
                             <div className="text-sm text-muted-foreground">{stat.label}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Fun Games Section */}
+                  <div className="p-6 rounded-2xl bg-card border border-border shadow-card mb-6">
+                    <h3 className="font-display font-semibold text-xl mb-6 flex items-center gap-2">
+                      <Gamepad2 className="w-5 h-5 text-campus-purple" />
+                      Learning Games
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {games.map((game, index) => {
+                        const Icon = game.icon;
+                        return (
+                          <div
+                            key={game.name}
+                            className={`p-4 rounded-xl ${game.color} text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-1`}
+                          >
+                            <div className="flex items-center gap-3 mb-3">
+                              <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+                                <Icon className="w-6 h-6" />
+                              </div>
+                              <div>
+                                <h4 className="font-semibold">{game.name}</h4>
+                                <p className="text-xs text-white/80">{game.description}</p>
+                              </div>
+                            </div>
+                            <a href={game.link} target="_blank" rel="noopener noreferrer">
+                              <Button className="w-full bg-white/20 hover:bg-white/30 text-white border-0">
+                                <Play className="w-4 h-4 mr-2" />
+                                Play Now
+                              </Button>
+                            </a>
                           </div>
                         );
                       })}
@@ -361,7 +771,7 @@ export default function Study() {
                 </div>
 
                 {/* Leaderboard */}
-                <div className="p-6 rounded-2xl bg-card border border-border shadow-card">
+                <div className="p-6 rounded-2xl bg-card border border-border shadow-card h-fit">
                   <h3 className="font-display font-semibold text-xl mb-6 flex items-center gap-2">
                     <Trophy className="w-5 h-5 text-campus-yellow" />
                     Leaderboard

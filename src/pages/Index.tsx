@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { 
@@ -12,7 +14,12 @@ import {
   Sparkles,
   ArrowRight,
   Star,
-  CheckCircle2
+  CheckCircle2,
+  ClipboardList,
+  Send,
+  ThumbsUp,
+  ThumbsDown,
+  Meh
 } from "lucide-react";
 import heroCampus from "@/assets/hero-campus.jpg";
 
@@ -54,7 +61,29 @@ const stats = [
   { value: "50+", label: "Research Labs" },
 ];
 
+const surveyQuestions = [
+  { id: "teachers", label: "Quality of Teaching", description: "How satisfied are you with the teaching quality?" },
+  { id: "library", label: "Library Facilities", description: "Rate the library resources and environment" },
+  { id: "labs", label: "Lab Equipment", description: "Working PCs, research facilities, equipment" },
+  { id: "washrooms", label: "Cleanliness", description: "Washrooms, campus cleanliness" },
+  { id: "environment", label: "Campus Environment", description: "Overall campus atmosphere and safety" },
+  { id: "support", label: "Student Support", description: "Administrative support and guidance" },
+];
+
 export default function Index() {
+  const [surveyRatings, setSurveyRatings] = useState<Record<string, string>>({});
+  const [surveyFeedback, setSurveyFeedback] = useState("");
+  const [surveySubmitted, setSurveySubmitted] = useState(false);
+
+  const handleRating = (questionId: string, rating: string) => {
+    setSurveyRatings({ ...surveyRatings, [questionId]: rating });
+  };
+
+  const submitSurvey = () => {
+    setSurveySubmitted(true);
+    // In real app, this would send to backend
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -111,7 +140,7 @@ export default function Index() {
                 </Button>
               </a>
               <Link to="/login">
-                <Button variant="glass" size="xl" className="w-full sm:w-auto border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
+                <Button variant="outline" size="xl" className="w-full sm:w-auto border-2 border-campus-teal bg-campus-teal/20 text-primary-foreground hover:bg-campus-teal/40">
                   Log In
                   <ArrowRight className="w-5 h-5" />
                 </Button>
@@ -295,6 +324,97 @@ export default function Index() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Survey Section */}
+      <section className="py-24 bg-gradient-to-br from-campus-purple/10 via-campus-blue/10 to-campus-teal/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-campus-purple/10 border border-campus-purple/20 mb-4">
+                <ClipboardList className="w-5 h-5 text-campus-purple" />
+                <span className="font-medium text-campus-purple">Campus Survey</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Help Us Improve
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Your feedback helps make our campus better for everyone
+              </p>
+            </div>
+
+            {surveySubmitted ? (
+              <div className="text-center py-12 px-6 rounded-3xl bg-campus-green/10 border-2 border-campus-green/30">
+                <div className="w-20 h-20 rounded-full bg-campus-green flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-display font-bold text-campus-green mb-2">Thank You!</h3>
+                <p className="text-muted-foreground">Your feedback has been submitted successfully.</p>
+              </div>
+            ) : (
+              <div className="p-8 rounded-3xl bg-card border border-border shadow-lg">
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  {surveyQuestions.map((question) => (
+                    <div key={question.id} className="p-4 rounded-xl bg-muted/50">
+                      <h4 className="font-semibold mb-1">{question.label}</h4>
+                      <p className="text-sm text-muted-foreground mb-3">{question.description}</p>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleRating(question.id, 'good')}
+                          className={`flex-1 p-3 rounded-lg flex items-center justify-center gap-2 transition-all ${
+                            surveyRatings[question.id] === 'good' 
+                              ? 'bg-campus-green text-white' 
+                              : 'bg-campus-green/10 text-campus-green hover:bg-campus-green/20'
+                          }`}
+                        >
+                          <ThumbsUp className="w-4 h-4" />
+                          Good
+                        </button>
+                        <button
+                          onClick={() => handleRating(question.id, 'okay')}
+                          className={`flex-1 p-3 rounded-lg flex items-center justify-center gap-2 transition-all ${
+                            surveyRatings[question.id] === 'okay' 
+                              ? 'bg-campus-yellow text-white' 
+                              : 'bg-campus-yellow/10 text-campus-yellow hover:bg-campus-yellow/20'
+                          }`}
+                        >
+                          <Meh className="w-4 h-4" />
+                          Okay
+                        </button>
+                        <button
+                          onClick={() => handleRating(question.id, 'bad')}
+                          className={`flex-1 p-3 rounded-lg flex items-center justify-center gap-2 transition-all ${
+                            surveyRatings[question.id] === 'bad' 
+                              ? 'bg-campus-orange text-white' 
+                              : 'bg-campus-orange/10 text-campus-orange hover:bg-campus-orange/20'
+                          }`}
+                        >
+                          <ThumbsDown className="w-4 h-4" />
+                          Poor
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mb-6">
+                  <label className="block font-semibold mb-2">Additional Feedback</label>
+                  <Textarea
+                    placeholder="Share your thoughts, suggestions, or concerns about the campus..."
+                    value={surveyFeedback}
+                    onChange={(e) => setSurveyFeedback(e.target.value)}
+                    className="min-h-[100px]"
+                  />
+                </div>
+
+                <Button variant="gradient" size="lg" className="w-full" onClick={submitSurvey}>
+                  <Send className="w-4 h-4 mr-2" />
+                  Submit Survey
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -10,6 +10,8 @@ import CampusMap from "./pages/CampusMap";
 import Study from "./pages/Study";
 import About from "./pages/About";
 import Alumni from "./pages/Alumni";
+import Internship from "./pages/Internship";
+import ResearchHub from "./pages/ResearchHub";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/study" element={<Study />} />
           <Route path="/about" element={<About />} />
           <Route path="/alumni" element={<Alumni />} />
+          <Route path="/internship" element={<Internship />} />
+          <Route path="/research-hub" element={<ResearchHub />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
