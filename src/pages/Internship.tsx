@@ -29,7 +29,7 @@ const internships = [
     stipend: "₹80,000/month",
     icon: Code,
     color: "bg-gradient-to-br from-blue-500 to-green-500",
-    link: "https://careers.google.com/students/",
+    link: "https://www.google.com/about/careers/applications/jobs/results/?q=intern",
     description: "Work on real-world projects with Google engineers"
   },
   {
@@ -41,7 +41,7 @@ const internships = [
     stipend: "₹75,000/month",
     icon: Building,
     color: "bg-gradient-to-br from-blue-600 to-purple-600",
-    link: "https://careers.microsoft.com/students/",
+    link: "https://careers.microsoft.com/v2/global/en/students",
     description: "Analyze data and build ML models for Azure services"
   },
   {
@@ -77,7 +77,7 @@ const internships = [
     stipend: "₹35,000/month",
     icon: Rocket,
     color: "bg-gradient-to-br from-indigo-500 to-blue-500",
-    link: "https://www.isro.gov.in/careers.html",
+    link: "https://www.isro.gov.in/Careers.html",
     description: "Work on satellite and space research projects"
   },
   {
@@ -89,7 +89,7 @@ const internships = [
     stipend: "₹40,000/month",
     icon: FlaskConical,
     color: "bg-gradient-to-br from-purple-500 to-indigo-500",
-    link: "https://www.tifr.res.in/",
+    link: "https://www.tifr.res.in/positions",
     description: "Fundamental physics research and experiments"
   },
   {
@@ -101,7 +101,7 @@ const internships = [
     stipend: "₹60,000/month",
     icon: Palette,
     color: "bg-gradient-to-br from-pink-500 to-red-500",
-    link: "https://www.adobe.com/careers/university.html",
+    link: "https://careers.adobe.com/us/en/search-results?keywords=intern",
     description: "Design experiences for Creative Cloud products"
   },
   {
@@ -113,7 +113,7 @@ const internships = [
     stipend: "₹20,000/month",
     icon: Trophy,
     color: "bg-gradient-to-br from-green-500 to-teal-500",
-    link: "https://sportsauthorityofindia.nic.in/",
+    link: "https://sportsauthorityofindia.gov.in/",
     description: "Sports event management and athlete coordination"
   },
   {
@@ -125,7 +125,7 @@ const internships = [
     stipend: "₹1,00,000/month",
     icon: Building,
     color: "bg-gradient-to-br from-orange-500 to-yellow-500",
-    link: "https://www.amazon.jobs/en/teams/internships-for-students",
+    link: "https://www.amazon.jobs/en/search?base_query=intern&loc_query=India",
     description: "Drive product strategy for Amazon services"
   },
   {
@@ -137,7 +137,7 @@ const internships = [
     stipend: "₹50,000/month",
     icon: Users,
     color: "bg-gradient-to-br from-teal-500 to-cyan-500",
-    link: "https://www2.deloitte.com/in/en/careers.html",
+    link: "https://www2.deloitte.com/in/en/careers/students.html",
     description: "Business consulting for Fortune 500 clients"
   },
   {
@@ -161,8 +161,56 @@ const internships = [
     stipend: "₹90,000/month",
     icon: DollarSign,
     color: "bg-gradient-to-br from-blue-700 to-indigo-700",
-    link: "https://www.goldmansachs.com/careers/students/",
+    link: "https://www.goldmansachs.com/careers/students/programs/india/",
     description: "Investment banking and financial analysis"
+  },
+  {
+    company: "Internshala",
+    role: "Multiple Internships",
+    domain: "All Students",
+    location: "Remote/India",
+    duration: "Varies",
+    stipend: "Varies",
+    icon: GraduationCap,
+    color: "bg-gradient-to-br from-sky-500 to-blue-600",
+    link: "https://internshala.com/internships/",
+    description: "India's largest internship platform with 10,000+ opportunities"
+  },
+  {
+    company: "LinkedIn",
+    role: "Engineering Intern",
+    domain: "BTech Students",
+    location: "Bangalore, India",
+    duration: "3 months",
+    stipend: "₹85,000/month",
+    icon: Users,
+    color: "bg-gradient-to-br from-blue-600 to-blue-800",
+    link: "https://careers.linkedin.com/students",
+    description: "Build features used by millions of professionals"
+  },
+  {
+    company: "DRDO",
+    role: "Defence Research Intern",
+    domain: "Engineering/Science",
+    location: "Delhi, India",
+    duration: "6 months",
+    stipend: "₹25,000/month",
+    icon: Rocket,
+    color: "bg-gradient-to-br from-gray-600 to-gray-800",
+    link: "https://www.drdo.gov.in/careers",
+    description: "Work on cutting-edge defence technologies"
+  },
+  {
+    company: "Unstop",
+    role: "Various Internships",
+    domain: "All Students",
+    location: "Pan India",
+    duration: "Varies",
+    stipend: "Varies",
+    icon: Briefcase,
+    color: "bg-gradient-to-br from-orange-500 to-red-500",
+    link: "https://unstop.com/internships",
+    description: "Discover internships, competitions and hackathons"
   },
 ];
 

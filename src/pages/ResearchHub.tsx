@@ -2,6 +2,13 @@ import { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { 
   FlaskConical, 
   BookOpen, 
@@ -214,6 +221,32 @@ export default function ResearchHub() {
       <section className="py-12 bg-muted">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-display font-bold text-center mb-8">Select Your Course</h2>
+          
+          {/* Dropdown Select */}
+          <div className="max-w-md mx-auto mb-8">
+            <Select value={selectedCourse || ""} onValueChange={(value) => setSelectedCourse(value)}>
+              <SelectTrigger className="w-full h-14 text-lg bg-card border-2 border-primary/20 focus:border-primary">
+                <SelectValue placeholder="🎓 Choose your course to see research papers..." />
+              </SelectTrigger>
+              <SelectContent>
+                {courses.map((course) => {
+                  const Icon = course.icon;
+                  return (
+                    <SelectItem key={course.id} value={course.id} className="py-3">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-8 h-8 rounded-lg ${course.color} flex items-center justify-center`}>
+                          <Icon className="w-4 h-4 text-white" />
+                        </div>
+                        <span className="font-medium">{course.name}</span>
+                      </div>
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Quick Select Buttons */}
           <div className="flex flex-wrap justify-center gap-3">
             {courses.map((course) => {
               const Icon = course.icon;
