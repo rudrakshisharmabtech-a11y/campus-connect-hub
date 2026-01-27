@@ -188,18 +188,100 @@ const moodEmojis = [
   { emoji: "😰", label: "Stressed", color: "bg-red-100 hover:bg-red-200" },
 ];
 
+// Personality quiz questions for character assignment
+const personalityQuestions = [
+  {
+    question: "How do you start your morning? 🌅",
+    options: [
+      { text: "Hit snooze 5 times 😴", scores: { cat: 2, dog: 0, bunny: 0, fox: 1 } },
+      { text: "Jump out excited! 🎉", scores: { cat: 0, dog: 2, bunny: 1, fox: 0 } },
+      { text: "Slow and peaceful 🌸", scores: { cat: 0, dog: 0, bunny: 2, fox: 1 } },
+      { text: "Already planned my day 📝", scores: { cat: 1, dog: 0, bunny: 0, fox: 2 } },
+    ]
+  },
+  {
+    question: "Favorite study snack? 🍿",
+    options: [
+      { text: "Coffee & cookies ☕", scores: { cat: 2, dog: 1, bunny: 0, fox: 0 } },
+      { text: "Energy drinks! ⚡", scores: { cat: 0, dog: 2, bunny: 0, fox: 1 } },
+      { text: "Fruits & veggies 🥕", scores: { cat: 0, dog: 0, bunny: 2, fox: 1 } },
+      { text: "Whatever's clever 🧠", scores: { cat: 1, dog: 0, bunny: 1, fox: 2 } },
+    ]
+  },
+  {
+    question: "Group project role? 👥",
+    options: [
+      { text: "The sleepy one 💤", scores: { cat: 2, dog: 0, bunny: 1, fox: 0 } },
+      { text: "The cheerleader! 📣", scores: { cat: 0, dog: 2, bunny: 0, fox: 0 } },
+      { text: "The peacemaker 🕊️", scores: { cat: 0, dog: 1, bunny: 2, fox: 0 } },
+      { text: "The mastermind 🎯", scores: { cat: 0, dog: 0, bunny: 0, fox: 2 } },
+    ]
+  },
+  {
+    question: "Weekend plans? 🎈",
+    options: [
+      { text: "Netflix & naps 🛋️", scores: { cat: 2, dog: 0, bunny: 1, fox: 0 } },
+      { text: "Party time! 🎊", scores: { cat: 0, dog: 2, bunny: 0, fox: 1 } },
+      { text: "Nature walks 🌿", scores: { cat: 0, dog: 1, bunny: 2, fox: 0 } },
+      { text: "Learn something new 📚", scores: { cat: 1, dog: 0, bunny: 0, fox: 2 } },
+    ]
+  },
+];
+
+const characterResults = {
+  cat: { emoji: "🐱", name: "Cozy Cat", trait: "The Chill Scholar", description: "You're relaxed, independent, and work at your own pace. You value your rest and know when to recharge!", color: "from-purple-400 to-pink-400" },
+  dog: { emoji: "🐶", name: "Peppy Pup", trait: "The Energetic Achiever", description: "You're enthusiastic, social, and always ready for action! Your positive energy motivates everyone around you!", color: "from-yellow-400 to-orange-400" },
+  bunny: { emoji: "🐰", name: "Gentle Bunny", trait: "The Kind Soul", description: "You're gentle, caring, and prefer peaceful environments. Your calm nature helps others feel at ease!", color: "from-pink-400 to-rose-400" },
+  fox: { emoji: "🦊", name: "Clever Fox", trait: "The Strategic Thinker", description: "You're smart, resourceful, and always thinking ahead. Your sharp mind finds solutions to any problem!", color: "from-orange-400 to-red-400" },
+};
+
 export default function Study() {
   const [searchQuery, setSearchQuery] = useState("");
   const [diaryEntry, setDiaryEntry] = useState("");
   const [selectedMood, setSelectedMood] = useState("");
   const [plannerTasks, setPlannerTasks] = useState<string[]>([]);
   const [newTask, setNewTask] = useState("");
+  const [quizAnswers, setQuizAnswers] = useState<number[]>([]);
+  const [showQuizResult, setShowQuizResult] = useState(false);
+  const [assignedCharacter, setAssignedCharacter] = useState<keyof typeof characterResults | null>(null);
 
   const addTask = () => {
     if (newTask.trim()) {
       setPlannerTasks([...plannerTasks, newTask]);
       setNewTask("");
     }
+  };
+
+  const handleQuizAnswer = (questionIndex: number, optionIndex: number) => {
+    const newAnswers = [...quizAnswers];
+    newAnswers[questionIndex] = optionIndex;
+    setQuizAnswers(newAnswers);
+  };
+
+  const calculateCharacter = () => {
+    const scores = { cat: 0, dog: 0, bunny: 0, fox: 0 };
+    
+    quizAnswers.forEach((answerIndex, questionIndex) => {
+      if (answerIndex !== undefined) {
+        const option = personalityQuestions[questionIndex].options[answerIndex];
+        scores.cat += option.scores.cat;
+        scores.dog += option.scores.dog;
+        scores.bunny += option.scores.bunny;
+        scores.fox += option.scores.fox;
+      }
+    });
+
+    const maxScore = Math.max(scores.cat, scores.dog, scores.bunny, scores.fox);
+    const character = Object.entries(scores).find(([_, score]) => score === maxScore)?.[0] as keyof typeof characterResults;
+    
+    setAssignedCharacter(character);
+    setShowQuizResult(true);
+  };
+
+  const resetQuiz = () => {
+    setQuizAnswers([]);
+    setShowQuizResult(false);
+    setAssignedCharacter(null);
   };
 
   return (
@@ -426,7 +508,7 @@ export default function Study() {
                     </div>
                   </div>
 
-                  {/* Daily Planner */}
+                  {/* Daily Planner with Personality Quiz */}
                   <div className="p-6 rounded-3xl bg-gradient-to-br from-pink-50 via-yellow-50 to-green-50 border-2 border-pink-200 shadow-lg">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="text-3xl">📋</span>
@@ -448,63 +530,117 @@ export default function Study() {
                     </div>
 
                     {/* Task List */}
-                    <div className="space-y-2 max-h-[200px] overflow-y-auto">
+                    <div className="space-y-2 max-h-[150px] overflow-y-auto mb-4">
                       {plannerTasks.length === 0 ? (
-                        <div className="text-center py-8 text-gray-400">
-                          <span className="text-4xl mb-2 block">🌈</span>
-                          <p>No tasks yet! Plan your day ahead</p>
+                        <div className="text-center py-4 text-gray-400">
+                          <span className="text-3xl mb-2 block">🌈</span>
+                          <p className="text-sm">No tasks yet! Plan your day ahead</p>
                         </div>
                       ) : (
                         plannerTasks.map((task, index) => (
-                          <div key={index} className="flex items-center gap-3 p-3 bg-white/70 rounded-xl border border-green-200">
-                            <input type="checkbox" className="w-5 h-5 rounded-full accent-green-500" />
-                            <span className="flex-1">{task}</span>
-                            <span className="text-xl">✨</span>
+                          <div key={index} className="flex items-center gap-3 p-2 bg-white/70 rounded-xl border border-green-200">
+                            <input type="checkbox" className="w-4 h-4 rounded-full accent-green-500" />
+                            <span className="flex-1 text-sm">{task}</span>
+                            <span className="text-lg">✨</span>
                           </div>
                         ))
                       )}
                     </div>
 
-                    {/* Time Blocks */}
-                    <div className="mt-4 pt-4 border-t-2 border-dashed border-pink-200">
-                      <h4 className="font-semibold text-pink-600 mb-2 flex items-center gap-2">
-                        <Clock className="w-4 h-4" /> Time Blocks
-                      </h4>
-                      <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="p-2 bg-yellow-100 rounded-lg flex items-center gap-2">
-                          <Sun className="w-4 h-4 text-yellow-600" /> Morning Study
-                        </div>
-                        <div className="p-2 bg-blue-100 rounded-lg flex items-center gap-2">
-                          <Cloud className="w-4 h-4 text-blue-600" /> Afternoon Class
-                        </div>
-                        <div className="p-2 bg-orange-100 rounded-lg flex items-center gap-2">
-                          <Coffee className="w-4 h-4 text-orange-600" /> Evening Break
-                        </div>
-                        <div className="p-2 bg-purple-100 rounded-lg flex items-center gap-2">
-                          <Moon className="w-4 h-4 text-purple-600" /> Night Review
-                        </div>
+                    {/* Personality Quiz Section */}
+                    <div className="mt-4 pt-4 border-t-2 border-dashed border-pink-300">
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="text-2xl">🎭</span>
+                        <h4 className="font-bold text-purple-700">Find Your Study Buddy Character!</h4>
                       </div>
+
+                      {!showQuizResult ? (
+                        <div className="space-y-4">
+                          {personalityQuestions.map((q, qIndex) => (
+                            <div 
+                              key={qIndex} 
+                              className={`p-4 rounded-2xl ${
+                                qIndex % 4 === 0 ? 'bg-gradient-to-r from-green-100 to-teal-100' :
+                                qIndex % 4 === 1 ? 'bg-gradient-to-r from-blue-100 to-purple-100' :
+                                qIndex % 4 === 2 ? 'bg-gradient-to-r from-pink-100 to-rose-100' :
+                                'bg-gradient-to-r from-yellow-100 to-orange-100'
+                              } border-2 border-white shadow-sm`}
+                            >
+                              <p className="font-semibold text-gray-700 mb-3 text-sm">{q.question}</p>
+                              <div className="grid grid-cols-2 gap-2">
+                                {q.options.map((option, oIndex) => (
+                                  <button
+                                    key={oIndex}
+                                    onClick={() => handleQuizAnswer(qIndex, oIndex)}
+                                    className={`p-2 rounded-xl text-xs font-medium transition-all duration-300 ${
+                                      quizAnswers[qIndex] === oIndex
+                                        ? 'bg-gradient-to-r from-purple-400 to-pink-400 text-white scale-105 shadow-lg'
+                                        : 'bg-white hover:bg-purple-50 text-gray-600 hover:scale-102 border border-purple-200'
+                                    }`}
+                                  >
+                                    {option.text}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+
+                          <Button
+                            onClick={calculateCharacter}
+                            disabled={quizAnswers.length < personalityQuestions.length || quizAnswers.includes(undefined as any)}
+                            className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white rounded-full py-3 font-bold text-sm shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            <Sparkles className="w-4 h-4 mr-2" />
+                            Reveal My Character! ✨
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="text-center animate-scale-in">
+                          {assignedCharacter && (
+                            <div className={`p-6 rounded-3xl bg-gradient-to-br ${characterResults[assignedCharacter].color} text-white shadow-2xl`}>
+                              <div className="text-7xl mb-3 animate-bounce">
+                                {characterResults[assignedCharacter].emoji}
+                              </div>
+                              <h3 className="text-2xl font-bold mb-1">
+                                {characterResults[assignedCharacter].name}
+                              </h3>
+                              <p className="text-lg font-semibold opacity-90 mb-2">
+                                {characterResults[assignedCharacter].trait}
+                              </p>
+                              <p className="text-sm opacity-80 mb-4">
+                                {characterResults[assignedCharacter].description}
+                              </p>
+                              <Button
+                                onClick={resetQuiz}
+                                className="bg-white/20 hover:bg-white/30 text-white rounded-full px-6 backdrop-blur-sm"
+                              >
+                                Try Again 🔄
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                {/* Cute Characters */}
+                {/* Cute Characters Display */}
                 <div className="flex justify-center gap-8 mt-8">
-                  <div className="text-center">
+                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'cat' ? 'scale-125 ring-4 ring-purple-400 rounded-full p-2 bg-purple-100' : ''}`}>
                     <div className="text-6xl animate-bounce">🐱</div>
-                    <p className="text-sm text-gray-500 mt-2">Study Buddy</p>
+                    <p className="text-sm text-gray-500 mt-2">Cozy Cat</p>
                   </div>
-                  <div className="text-center">
+                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'dog' ? 'scale-125 ring-4 ring-yellow-400 rounded-full p-2 bg-yellow-100' : ''}`}>
                     <div className="text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🐶</div>
-                    <p className="text-sm text-gray-500 mt-2">Motivation Pal</p>
+                    <p className="text-sm text-gray-500 mt-2">Peppy Pup</p>
                   </div>
-                  <div className="text-center">
+                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'bunny' ? 'scale-125 ring-4 ring-pink-400 rounded-full p-2 bg-pink-100' : ''}`}>
                     <div className="text-6xl animate-bounce" style={{ animationDelay: '0.4s' }}>🐰</div>
-                    <p className="text-sm text-gray-500 mt-2">Focus Friend</p>
+                    <p className="text-sm text-gray-500 mt-2">Gentle Bunny</p>
                   </div>
-                  <div className="text-center">
+                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'fox' ? 'scale-125 ring-4 ring-orange-400 rounded-full p-2 bg-orange-100' : ''}`}>
                     <div className="text-6xl animate-bounce" style={{ animationDelay: '0.6s' }}>🦊</div>
-                    <p className="text-sm text-gray-500 mt-2">Clever Helper</p>
+                    <p className="text-sm text-gray-500 mt-2">Clever Fox</p>
                   </div>
                 </div>
               </div>
