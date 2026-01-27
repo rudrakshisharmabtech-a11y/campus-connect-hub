@@ -193,46 +193,184 @@ const personalityQuestions = [
   {
     question: "How do you start your morning? 🌅",
     options: [
-      { text: "Hit snooze 5 times 😴", scores: { cat: 2, dog: 0, bunny: 0, fox: 1 } },
-      { text: "Jump out excited! 🎉", scores: { cat: 0, dog: 2, bunny: 1, fox: 0 } },
-      { text: "Slow and peaceful 🌸", scores: { cat: 0, dog: 0, bunny: 2, fox: 1 } },
-      { text: "Already planned my day 📝", scores: { cat: 1, dog: 0, bunny: 0, fox: 2 } },
+      { text: "Hit snooze 5 times 😴", scores: { cat: 2, dog: 0, bunny: 0, fox: 0, owl: 1, panda: 2, penguin: 0, unicorn: 0 } },
+      { text: "Jump out excited! 🎉", scores: { cat: 0, dog: 2, bunny: 1, fox: 0, owl: 0, panda: 0, penguin: 1, unicorn: 2 } },
+      { text: "Slow and peaceful 🌸", scores: { cat: 0, dog: 0, bunny: 2, fox: 1, owl: 0, panda: 1, penguin: 1, unicorn: 0 } },
+      { text: "Already planned my day 📝", scores: { cat: 1, dog: 0, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
     ]
   },
   {
     question: "Favorite study snack? 🍿",
     options: [
-      { text: "Coffee & cookies ☕", scores: { cat: 2, dog: 1, bunny: 0, fox: 0 } },
-      { text: "Energy drinks! ⚡", scores: { cat: 0, dog: 2, bunny: 0, fox: 1 } },
-      { text: "Fruits & veggies 🥕", scores: { cat: 0, dog: 0, bunny: 2, fox: 1 } },
-      { text: "Whatever's clever 🧠", scores: { cat: 1, dog: 0, bunny: 1, fox: 2 } },
+      { text: "Coffee & cookies ☕", scores: { cat: 2, dog: 1, bunny: 0, fox: 0, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
+      { text: "Energy drinks! ⚡", scores: { cat: 0, dog: 2, bunny: 0, fox: 1, owl: 0, panda: 0, penguin: 2, unicorn: 1 } },
+      { text: "Fruits & veggies 🥕", scores: { cat: 0, dog: 0, bunny: 2, fox: 1, owl: 0, panda: 2, penguin: 0, unicorn: 1 } },
+      { text: "Whatever's clever 🧠", scores: { cat: 1, dog: 0, bunny: 1, fox: 2, owl: 1, panda: 0, penguin: 0, unicorn: 0 } },
     ]
   },
   {
     question: "Group project role? 👥",
     options: [
-      { text: "The sleepy one 💤", scores: { cat: 2, dog: 0, bunny: 1, fox: 0 } },
-      { text: "The cheerleader! 📣", scores: { cat: 0, dog: 2, bunny: 0, fox: 0 } },
-      { text: "The peacemaker 🕊️", scores: { cat: 0, dog: 1, bunny: 2, fox: 0 } },
-      { text: "The mastermind 🎯", scores: { cat: 0, dog: 0, bunny: 0, fox: 2 } },
+      { text: "The sleepy one 💤", scores: { cat: 2, dog: 0, bunny: 1, fox: 0, owl: 0, panda: 2, penguin: 0, unicorn: 0 } },
+      { text: "The cheerleader! 📣", scores: { cat: 0, dog: 2, bunny: 0, fox: 0, owl: 0, panda: 0, penguin: 1, unicorn: 2 } },
+      { text: "The peacemaker 🕊️", scores: { cat: 0, dog: 1, bunny: 2, fox: 0, owl: 0, panda: 1, penguin: 0, unicorn: 1 } },
+      { text: "The mastermind 🎯", scores: { cat: 0, dog: 0, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
     ]
   },
   {
     question: "Weekend plans? 🎈",
     options: [
-      { text: "Netflix & naps 🛋️", scores: { cat: 2, dog: 0, bunny: 1, fox: 0 } },
-      { text: "Party time! 🎊", scores: { cat: 0, dog: 2, bunny: 0, fox: 1 } },
-      { text: "Nature walks 🌿", scores: { cat: 0, dog: 1, bunny: 2, fox: 0 } },
-      { text: "Learn something new 📚", scores: { cat: 1, dog: 0, bunny: 0, fox: 2 } },
+      { text: "Netflix & naps 🛋️", scores: { cat: 2, dog: 0, bunny: 1, fox: 0, owl: 0, panda: 2, penguin: 0, unicorn: 0 } },
+      { text: "Party time! 🎊", scores: { cat: 0, dog: 2, bunny: 0, fox: 1, owl: 0, panda: 0, penguin: 2, unicorn: 1 } },
+      { text: "Nature walks 🌿", scores: { cat: 0, dog: 1, bunny: 2, fox: 0, owl: 1, panda: 1, penguin: 0, unicorn: 1 } },
+      { text: "Learn something new 📚", scores: { cat: 1, dog: 0, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
+    ]
+  },
+  {
+    question: "Your phone battery dies during an exam. You... 📱💀",
+    options: [
+      { text: "Panic and forget everything 😱", scores: { cat: 0, dog: 0, bunny: 2, fox: 0, owl: 0, panda: 1, penguin: 2, unicorn: 0 } },
+      { text: "Meh, I memorized it anyway 😎", scores: { cat: 2, dog: 0, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
+      { text: "Ask neighbor for their phone! 🙋", scores: { cat: 0, dog: 2, bunny: 0, fox: 1, owl: 0, panda: 0, penguin: 1, unicorn: 1 } },
+      { text: "Draw pictures as answers 🎨", scores: { cat: 1, dog: 1, bunny: 1, fox: 0, owl: 0, panda: 1, penguin: 0, unicorn: 2 } },
+    ]
+  },
+  {
+    question: "How do you handle deadlines? ⏰",
+    options: [
+      { text: "What deadline? 🤷", scores: { cat: 2, dog: 0, bunny: 0, fox: 0, owl: 0, panda: 2, penguin: 1, unicorn: 0 } },
+      { text: "Finish 3 days early! ✅", scores: { cat: 0, dog: 1, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
+      { text: "All-nighter champion! 🌙", scores: { cat: 0, dog: 2, bunny: 0, fox: 0, owl: 2, panda: 0, penguin: 1, unicorn: 1 } },
+      { text: "Cry, then do it 😭✨", scores: { cat: 1, dog: 0, bunny: 2, fox: 0, owl: 0, panda: 0, penguin: 1, unicorn: 1 } },
+    ]
+  },
+  {
+    question: "Your professor asks a question. You... 🎓",
+    options: [
+      { text: "Pretend to take notes 📝", scores: { cat: 2, dog: 0, bunny: 1, fox: 1, owl: 0, panda: 2, penguin: 0, unicorn: 0 } },
+      { text: "Answer immediately! 🙋‍♂️", scores: { cat: 0, dog: 2, bunny: 0, fox: 1, owl: 1, panda: 0, penguin: 0, unicorn: 1 } },
+      { text: "Ask another question 🤔", scores: { cat: 1, dog: 0, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
+      { text: "Give a random magical answer ✨", scores: { cat: 0, dog: 1, bunny: 1, fox: 0, owl: 0, panda: 0, penguin: 1, unicorn: 2 } },
+    ]
+  },
+  {
+    question: "Your study playlist is... 🎵",
+    options: [
+      { text: "Lo-fi beats to relax 🎧", scores: { cat: 2, dog: 0, bunny: 2, fox: 0, owl: 1, panda: 2, penguin: 0, unicorn: 0 } },
+      { text: "Heavy metal for focus! 🎸", scores: { cat: 0, dog: 2, bunny: 0, fox: 0, owl: 0, panda: 0, penguin: 2, unicorn: 1 } },
+      { text: "Complete silence 🤫", scores: { cat: 1, dog: 0, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
+      { text: "Disney songs! 🏰", scores: { cat: 0, dog: 1, bunny: 1, fox: 0, owl: 0, panda: 0, penguin: 0, unicorn: 2 } },
+    ]
+  },
+  {
+    question: "Your bag always has... 🎒",
+    options: [
+      { text: "Emergency snacks 🍫", scores: { cat: 1, dog: 1, bunny: 1, fox: 0, owl: 0, panda: 2, penguin: 1, unicorn: 0 } },
+      { text: "15 pens (all work!) 🖊️", scores: { cat: 0, dog: 0, bunny: 0, fox: 2, owl: 2, panda: 0, penguin: 0, unicorn: 0 } },
+      { text: "Random chaos 🌪️", scores: { cat: 2, dog: 1, bunny: 0, fox: 0, owl: 0, panda: 1, penguin: 2, unicorn: 0 } },
+      { text: "Glitter & stickers 💖", scores: { cat: 0, dog: 1, bunny: 2, fox: 0, owl: 0, panda: 0, penguin: 0, unicorn: 2 } },
+    ]
+  },
+  {
+    question: "When you get an A, you... 💯",
+    options: [
+      { text: "Act like it's normal 😏", scores: { cat: 2, dog: 0, bunny: 0, fox: 2, owl: 1, panda: 0, penguin: 0, unicorn: 0 } },
+      { text: "Tell EVERYONE! 📢", scores: { cat: 0, dog: 2, bunny: 0, fox: 0, owl: 0, panda: 0, penguin: 2, unicorn: 1 } },
+      { text: "Quietly celebrate 🥳", scores: { cat: 0, dog: 0, bunny: 2, fox: 0, owl: 0, panda: 2, penguin: 0, unicorn: 0 } },
+      { text: "Do a victory dance! 💃", scores: { cat: 0, dog: 1, bunny: 0, fox: 0, owl: 0, panda: 0, penguin: 1, unicorn: 2 } },
     ]
   },
 ];
 
 const characterResults = {
-  cat: { emoji: "🐱", name: "Cozy Cat", trait: "The Chill Scholar", description: "You're relaxed, independent, and work at your own pace. You value your rest and know when to recharge!", color: "from-purple-400 to-pink-400" },
-  dog: { emoji: "🐶", name: "Peppy Pup", trait: "The Energetic Achiever", description: "You're enthusiastic, social, and always ready for action! Your positive energy motivates everyone around you!", color: "from-yellow-400 to-orange-400" },
-  bunny: { emoji: "🐰", name: "Gentle Bunny", trait: "The Kind Soul", description: "You're gentle, caring, and prefer peaceful environments. Your calm nature helps others feel at ease!", color: "from-pink-400 to-rose-400" },
-  fox: { emoji: "🦊", name: "Clever Fox", trait: "The Strategic Thinker", description: "You're smart, resourceful, and always thinking ahead. Your sharp mind finds solutions to any problem!", color: "from-orange-400 to-red-400" },
+  cat: { 
+    emoji: "🐱", 
+    name: "Cozy Cat", 
+    trait: "The Chill Scholar", 
+    description: "You're relaxed, independent, and work at your own pace. You value your rest and know when to recharge!",
+    funnyStory: "Legend says Cozy Cat once took a 3-hour nap during a 2-hour lecture and still got an A because they 'absorbed knowledge through osmosis.' Their favorite study spot? Anywhere with a sunbeam. They've mastered the art of looking busy while doing absolutely nothing. Teachers are scared to wake them up because last time someone tried, they hissed.",
+    personality: "You have the magical ability to stay calm when everyone else is losing their minds before exams. Your motto: 'Will this matter in 5 years? No? Then nap.' You've perfected the 'I'm listening' face while actually planning your next meal.",
+    superpower: "Can fall asleep in under 30 seconds anywhere",
+    weakness: "Any sunbeam = instant nap mode",
+    color: "from-purple-400 to-pink-400" 
+  },
+  dog: { 
+    emoji: "🐶", 
+    name: "Peppy Pup", 
+    trait: "The Energetic Achiever", 
+    description: "You're enthusiastic, social, and always ready for action! Your positive energy motivates everyone around you!",
+    funnyStory: "Peppy Pup once organized 7 study groups, 3 club meetings, and a surprise birthday party... all on the same day. They survived purely on enthusiasm and the power of friendship. Their notes are written in 15 different colored pens and honestly, nobody can read them but everyone pretends they're amazing.",
+    personality: "You're the friend who sends 47 messages in the group chat at 6 AM asking who wants to jog before class. Your energy is illegal before noon. You've been asked to 'calm down' more times than you can count, but you physically cannot.",
+    superpower: "Infinite energy and zero coffee needed",
+    weakness: "Cannot whisper. Every whisper is just loud talking.",
+    color: "from-yellow-400 to-orange-400" 
+  },
+  bunny: { 
+    emoji: "🐰", 
+    name: "Gentle Bunny", 
+    trait: "The Kind Soul", 
+    description: "You're gentle, caring, and prefer peaceful environments. Your calm nature helps others feel at ease!",
+    funnyStory: "Gentle Bunny once cried during a documentary about plants. They have named all the campus squirrels and bring them snacks daily. Their notes are decorated with tiny flowers and motivational quotes like 'You can do it little star!' Their professors give them extra credit just for being adorable.",
+    personality: "You're the emotional support friend everyone needs. You've helped 27 people cry through their problems this semester alone. Your room smells like lavender and good vibes. You apologize to chairs when you bump into them.",
+    superpower: "Can sense when friends need a hug from 3 buildings away",
+    weakness: "Slightly mean comments = 3 days of sadness",
+    color: "from-pink-400 to-rose-400" 
+  },
+  fox: { 
+    emoji: "🦊", 
+    name: "Clever Fox", 
+    trait: "The Strategic Thinker", 
+    description: "You're smart, resourceful, and always thinking ahead. Your sharp mind finds solutions to any problem!",
+    funnyStory: "Clever Fox once found a loophole in the grading system and technically graduated twice. They have a spreadsheet for their spreadsheets. Their room looks like a detective's office with red strings connecting everything. They predicted the exam questions so accurately, the professor now asks them to review the tests first.",
+    personality: "You've color-coded your entire life including your emotions. Your 5-year plan has backup plans with backup plans. You correct professors during lectures but in a way that makes them thank you. You've won arguments in your head that haven't happened yet.",
+    superpower: "Can find a shortcut for literally anything",
+    weakness: "Gets irrationally angry at inefficiency",
+    color: "from-orange-400 to-red-400" 
+  },
+  owl: { 
+    emoji: "🦉", 
+    name: "Night Owl", 
+    trait: "The Midnight Genius", 
+    description: "You're wise, thoughtful, and do your best work when everyone else is asleep!",
+    funnyStory: "Night Owl has never seen a sunrise... from the morning side. They've written entire thesis papers between 2-5 AM. The library security guard knows them by name and brings them coffee. They once submitted an assignment at 11:59:59 PM and felt SO early.",
+    personality: "You firmly believe creativity peaks at 3 AM and nothing can convince you otherwise. Your dark circles have dark circles. You've memorized the entire nighttime campus map including secret hiding spots. Morning people are your natural enemies.",
+    superpower: "Peak brain function after midnight",
+    weakness: "Any class before 11 AM is basically torture",
+    color: "from-indigo-400 to-purple-400" 
+  },
+  panda: { 
+    emoji: "🐼", 
+    name: "Chill Panda", 
+    trait: "The Zen Master", 
+    description: "You're laid-back, food-motivated, and bring balance to chaos!",
+    funnyStory: "Chill Panda once meditated so deeply during an exam, they achieved enlightenment... but forgot to write their name on the paper. They've eaten in every campus location including places that are technically 'not for eating.' Their life philosophy: 'If stressed, eat. If happy, eat. If sad, eat more.'",
+    personality: "You're the friend who says 'it'll work out' and somehow it always does. Your approach to problems is like your approach to bamboo: just keep munching until it goes away. You've mastered the art of looking productive while actually just vibing.",
+    superpower: "Unshakeable calmness in any crisis",
+    weakness: "Will abandon anything for food",
+    color: "from-emerald-400 to-teal-400" 
+  },
+  penguin: { 
+    emoji: "🐧", 
+    name: "Party Penguin", 
+    trait: "The Social Butterfly", 
+    description: "You're fun, social, and know how to balance work and play!",
+    funnyStory: "Party Penguin has been to 43 campus events this semester... including some they weren't invited to. They know everyone's name, birthday, and drama. They once organized a flash mob in the library and somehow didn't get banned. Their calendar is just a list of parties with occasional 'study' slots.",
+    personality: "You believe networking IS studying. Your LinkedIn has more connections than the campus WiFi. You've never met a stranger, only 'future best friends.' Your idea of a quiet night is only going to TWO events.",
+    superpower: "Can make friends with anyone in under 60 seconds",
+    weakness: "FOMO is a serious medical condition for you",
+    color: "from-cyan-400 to-blue-400" 
+  },
+  unicorn: { 
+    emoji: "🦄", 
+    name: "Magical Unicorn", 
+    trait: "The Creative Dreamer", 
+    description: "You're creative, optimistic, and see magic everywhere!",
+    funnyStory: "Magical Unicorn once submitted an art assignment as their physics homework and got points for 'creative interpretation of gravity.' Their notes look like a fairy tale coloring book. They've convinced 3 professors to accept glitter as a valid highlighting technique. Their career plan? 'Following my heart to wherever the sparkles lead.'",
+    personality: "You add emojis to serious emails and it somehow works. Your problem-solving approach involves saying 'what if we just... made it pretty?' You've cried happy tears at 4 sunsets this week alone. Reality is just a suggestion to you.",
+    superpower: "Can turn any boring project into an aesthetic masterpiece",
+    weakness: "Gets distracted by anything sparkly",
+    color: "from-pink-400 to-violet-400" 
+  },
 };
 
 export default function Study() {
@@ -259,7 +397,7 @@ export default function Study() {
   };
 
   const calculateCharacter = () => {
-    const scores = { cat: 0, dog: 0, bunny: 0, fox: 0 };
+    const scores = { cat: 0, dog: 0, bunny: 0, fox: 0, owl: 0, panda: 0, penguin: 0, unicorn: 0 };
     
     quizAnswers.forEach((answerIndex, questionIndex) => {
       if (answerIndex !== undefined) {
@@ -268,10 +406,14 @@ export default function Study() {
         scores.dog += option.scores.dog;
         scores.bunny += option.scores.bunny;
         scores.fox += option.scores.fox;
+        scores.owl += option.scores.owl;
+        scores.panda += option.scores.panda;
+        scores.penguin += option.scores.penguin;
+        scores.unicorn += option.scores.unicorn;
       }
     });
 
-    const maxScore = Math.max(scores.cat, scores.dog, scores.bunny, scores.fox);
+    const maxScore = Math.max(...Object.values(scores));
     const character = Object.entries(scores).find(([_, score]) => score === maxScore)?.[0] as keyof typeof characterResults;
     
     setAssignedCharacter(character);
@@ -607,9 +749,38 @@ export default function Study() {
                               <p className="text-lg font-semibold opacity-90 mb-2">
                                 {characterResults[assignedCharacter].trait}
                               </p>
-                              <p className="text-sm opacity-80 mb-4">
+                              <p className="text-sm opacity-80 mb-3">
                                 {characterResults[assignedCharacter].description}
                               </p>
+                              
+                              {/* Funny Story Section */}
+                              <div className="bg-white/20 rounded-2xl p-4 mb-3 text-left backdrop-blur-sm">
+                                <p className="text-xs font-bold mb-1 flex items-center gap-1">📖 Your Origin Story:</p>
+                                <p className="text-xs opacity-90 italic leading-relaxed">
+                                  {characterResults[assignedCharacter].funnyStory}
+                                </p>
+                              </div>
+                              
+                              {/* Personality Details */}
+                              <div className="bg-white/20 rounded-2xl p-4 mb-3 text-left backdrop-blur-sm">
+                                <p className="text-xs font-bold mb-1 flex items-center gap-1">🧠 Your Personality:</p>
+                                <p className="text-xs opacity-90 leading-relaxed">
+                                  {characterResults[assignedCharacter].personality}
+                                </p>
+                              </div>
+                              
+                              {/* Superpower & Weakness */}
+                              <div className="grid grid-cols-2 gap-2 mb-4">
+                                <div className="bg-white/20 rounded-xl p-3 backdrop-blur-sm">
+                                  <p className="text-xs font-bold">⚡ Superpower:</p>
+                                  <p className="text-xs opacity-90">{characterResults[assignedCharacter].superpower}</p>
+                                </div>
+                                <div className="bg-white/20 rounded-xl p-3 backdrop-blur-sm">
+                                  <p className="text-xs font-bold">💔 Weakness:</p>
+                                  <p className="text-xs opacity-90">{characterResults[assignedCharacter].weakness}</p>
+                                </div>
+                              </div>
+                              
                               <Button
                                 onClick={resetQuiz}
                                 className="bg-white/20 hover:bg-white/30 text-white rounded-full px-6 backdrop-blur-sm"
@@ -624,23 +795,39 @@ export default function Study() {
                   </div>
                 </div>
 
-                {/* Cute Characters Display */}
-                <div className="flex justify-center gap-8 mt-8">
-                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'cat' ? 'scale-125 ring-4 ring-purple-400 rounded-full p-2 bg-purple-100' : ''}`}>
-                    <div className="text-6xl animate-bounce">🐱</div>
-                    <p className="text-sm text-gray-500 mt-2">Cozy Cat</p>
+                {/* Cute Characters Display - All 8 Characters */}
+                <div className="grid grid-cols-4 md:grid-cols-8 gap-4 mt-8">
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'cat' ? 'scale-125 ring-4 ring-purple-400 rounded-full p-2 bg-purple-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce">🐱</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Cozy Cat</p>
                   </div>
-                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'dog' ? 'scale-125 ring-4 ring-yellow-400 rounded-full p-2 bg-yellow-100' : ''}`}>
-                    <div className="text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🐶</div>
-                    <p className="text-sm text-gray-500 mt-2">Peppy Pup</p>
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'dog' ? 'scale-125 ring-4 ring-yellow-400 rounded-full p-2 bg-yellow-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce" style={{ animationDelay: '0.1s' }}>🐶</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Peppy Pup</p>
                   </div>
-                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'bunny' ? 'scale-125 ring-4 ring-pink-400 rounded-full p-2 bg-pink-100' : ''}`}>
-                    <div className="text-6xl animate-bounce" style={{ animationDelay: '0.4s' }}>🐰</div>
-                    <p className="text-sm text-gray-500 mt-2">Gentle Bunny</p>
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'bunny' ? 'scale-125 ring-4 ring-pink-400 rounded-full p-2 bg-pink-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🐰</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Gentle Bunny</p>
                   </div>
-                  <div className={`text-center transition-all duration-300 ${assignedCharacter === 'fox' ? 'scale-125 ring-4 ring-orange-400 rounded-full p-2 bg-orange-100' : ''}`}>
-                    <div className="text-6xl animate-bounce" style={{ animationDelay: '0.6s' }}>🦊</div>
-                    <p className="text-sm text-gray-500 mt-2">Clever Fox</p>
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'fox' ? 'scale-125 ring-4 ring-orange-400 rounded-full p-2 bg-orange-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce" style={{ animationDelay: '0.3s' }}>🦊</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Clever Fox</p>
+                  </div>
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'owl' ? 'scale-125 ring-4 ring-indigo-400 rounded-full p-2 bg-indigo-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce" style={{ animationDelay: '0.4s' }}>🦉</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Night Owl</p>
+                  </div>
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'panda' ? 'scale-125 ring-4 ring-emerald-400 rounded-full p-2 bg-emerald-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce" style={{ animationDelay: '0.5s' }}>🐼</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Chill Panda</p>
+                  </div>
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'penguin' ? 'scale-125 ring-4 ring-cyan-400 rounded-full p-2 bg-cyan-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce" style={{ animationDelay: '0.6s' }}>🐧</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Party Penguin</p>
+                  </div>
+                  <div className={`text-center transition-all duration-300 cursor-pointer hover:scale-110 ${assignedCharacter === 'unicorn' ? 'scale-125 ring-4 ring-violet-400 rounded-full p-2 bg-violet-100' : ''}`}>
+                    <div className="text-5xl md:text-6xl animate-bounce" style={{ animationDelay: '0.7s' }}>🦄</div>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-1">Magical Unicorn</p>
                   </div>
                 </div>
               </div>
