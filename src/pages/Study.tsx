@@ -507,9 +507,12 @@ export default function Study() {
                 {studyTools.map((tool, index) => {
                   const Icon = tool.icon;
                   return (
-                    <div
+                    <a
                       key={tool.id}
-                      className="p-6 rounded-2xl bg-card border border-border shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up"
+                      href={tool.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-6 rounded-2xl bg-card border border-border shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up cursor-pointer"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
                       <div className="flex items-start gap-4 mb-4">
@@ -531,17 +534,10 @@ export default function Study() {
                         ))}
                       </div>
 
-                      <a 
-                        href={tool.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="block w-full"
-                      >
-                        <Button variant="gradient" className="w-full">
-                          Open {tool.title}
-                        </Button>
-                      </a>
-                    </div>
+                      <Button variant="gradient" className="w-full pointer-events-none">
+                        Open {tool.title}
+                      </Button>
+                    </a>
                   );
                 })}
               </div>
