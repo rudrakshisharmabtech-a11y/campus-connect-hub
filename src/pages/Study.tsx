@@ -1,10 +1,19 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 import {
   BookOpen,
   Brain,
@@ -95,10 +104,10 @@ const studyTools = [
 ];
 
 const studyGroups = [
-  { name: "DSA Masters", members: 128, subject: "Data Structures", level: "Intermediate", activity: "Active now" },
-  { name: "ML Explorers", members: 89, subject: "Machine Learning", level: "Advanced", activity: "3 members online" },
-  { name: "Web Dev Warriors", members: 156, subject: "Web Development", level: "Beginner", activity: "Study session at 5PM" },
-  { name: "Database Ninjas", members: 67, subject: "DBMS", level: "Intermediate", activity: "Quiz tomorrow" },
+  { name: "DSA Masters", members: 128, subject: "Data Structures", level: "Intermediate", activity: "Active now", slug: "dsa-masters" },
+  { name: "ML Explorers", members: 89, subject: "Machine Learning", level: "Advanced", activity: "3 members online", slug: "ml-explorers" },
+  { name: "Web Dev Warriors", members: 156, subject: "Web Development", level: "Beginner", activity: "Study session at 5PM", slug: "web-dev-warriors" },
+  { name: "Database Ninjas", members: 67, subject: "DBMS", level: "Intermediate", activity: "Quiz tomorrow", slug: "database-ninjas" },
 ];
 
 const achievements = [
@@ -374,6 +383,7 @@ const characterResults = {
 };
 
 export default function Study() {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [diaryEntry, setDiaryEntry] = useState("");
   const [selectedMood, setSelectedMood] = useState("");
@@ -382,6 +392,11 @@ export default function Study() {
   const [quizAnswers, setQuizAnswers] = useState<number[]>([]);
   const [showQuizResult, setShowQuizResult] = useState(false);
   const [assignedCharacter, setAssignedCharacter] = useState<keyof typeof characterResults | null>(null);
+  const [showCreateGroup, setShowCreateGroup] = useState(false);
+  const [newGroupName, setNewGroupName] = useState("");
+  const [newGroupMaxMembers, setNewGroupMaxMembers] = useState("");
+  const [newGroupContent, setNewGroupContent] = useState("");
+  const [newGroupLogo, setNewGroupLogo] = useState("");
 
   const addTask = () => {
     if (newTask.trim()) {
@@ -968,7 +983,7 @@ export default function Study() {
                     </div>
 
                     <div className="flex gap-2">
-                      <Button variant="gradient" className="flex-1">
+                      <Button variant="gradient" className="flex-1" onClick={() => navigate(`/study-group/${group.slug}`)}>
                         Join Group
                       </Button>
                       <Button variant="outline" size="icon">
@@ -979,7 +994,10 @@ export default function Study() {
                 ))}
 
                 {/* Create Group Card */}
-                <div className="p-6 rounded-2xl border-2 border-dashed border-border flex flex-col items-center justify-center text-center min-h-[200px] hover:border-primary transition-colors cursor-pointer group">
+                <div
+                  onClick={() => setShowCreateGroup(true)}
+                  className="p-6 rounded-2xl border-2 border-dashed border-border flex flex-col items-center justify-center text-center min-h-[200px] hover:border-primary transition-colors cursor-pointer group"
+                >
                   <div className="w-14 h-14 rounded-xl bg-muted flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
                     <Users className="w-7 h-7 text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
@@ -1139,6 +1157,75 @@ export default function Study() {
           </Tabs>
         </div>
       </section>
+
+      {/* Create Group Dialog */}
+      <Dialog open={showCreateGroup} onOpenChange={setShowCreateGroup}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl">Create New Study Group</DialogTitle>
+            <DialogDescription>Set up your group details to get started.</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="group-name">Group Name *</Label>
+              <Input
+                id="group-name"
+                placeholder="e.g., Algorithm Aces"
+                value={newGroupName}
+                onChange={(e) => setNewGroupName(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="group-logo">Group Logo / Emoji</Label>
+              <Input
+                id="group-logo"
+                placeholder="e.g., 🚀 or paste an image URL"
+                value={newGroupLogo}
+                onChange={(e) => setNewGroupLogo(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="group-members">Maximum Members</Label>
+              <Input
+                id="group-members"
+                type="number"
+                placeholder="e.g., 50"
+                value={newGroupMaxMembers}
+                onChange={(e) => setNewGroupMaxMembers(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="group-content">Group Description & Content</Label>
+              <Textarea
+                id="group-content"
+                placeholder="Describe what this group will study, share resources, topics covered..."
+                value={newGroupContent}
+                onChange={(e) => setNewGroupContent(e.target.value)}
+                className="min-h-[100px]"
+              />
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <Button variant="outline" className="flex-1" onClick={() => setShowCreateGroup(false)}>
+              Cancel
+            </Button>
+            <Button
+              variant="gradient"
+              className="flex-1"
+              disabled={!newGroupName.trim()}
+              onClick={() => {
+                setShowCreateGroup(false);
+                setNewGroupName("");
+                setNewGroupLogo("");
+                setNewGroupMaxMembers("");
+                setNewGroupContent("");
+              }}
+            >
+              Create Group
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
