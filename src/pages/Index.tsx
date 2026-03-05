@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Navbar from "@/components/layout/Navbar";
@@ -74,14 +77,30 @@ export default function Index() {
   const [surveyRatings, setSurveyRatings] = useState<Record<string, string>>({});
   const [surveyFeedback, setSurveyFeedback] = useState("");
   const [surveySubmitted, setSurveySubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const { user } = useAuth();
+  const { toast } = useToast();
 
   const handleRating = (questionId: string, rating: string) => {
     setSurveyRatings({ ...surveyRatings, [questionId]: rating });
   };
 
-  const submitSurvey = () => {
-    setSurveySubmitted(true);
-    // In real app, this would send to backend
+  const submitSurvey = async () => {
+    setSubmitting(true);
+    const { error } = await supabase.from("feedback").insert({
+      user_id: user?.id || null,
+      teaching_quality: surveyRatings["teachers"] || null,
+      facilities_rating: surveyRatings["library"] || null,
+      environment_rating: surveyRatings["environment"] || null,
+      comments: surveyFeedback || null,
+    });
+    setSubmitting(false);
+    if (error) {
+      toast({ title: "Failed to submit feedback", description: error.message, variant: "destructive" });
+    } else {
+      setSurveySubmitted(true);
+      toast({ title: "Thank you for your feedback!" });
+    }
   };
 
   return (
@@ -409,7 +428,7 @@ export default function Index() {
                   />
                 </div>
 
-                <Button variant="gradient" size="lg" className="w-full" onClick={submitSurvey}>
+                <Button variant="gradient" size="lg" className="w-full" onClick={submitSurvey} disabled={submitting}>
                   <Send className="w-4 h-4 mr-2" />
                   Submit Survey
                 </Button>
