@@ -522,12 +522,9 @@ export default function Study() {
                 {studyTools.map((tool, index) => {
                   const Icon = tool.icon;
                   return (
-                    <a
+                    <div
                       key={tool.id}
-                      href={tool.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block p-6 rounded-2xl bg-card border border-border shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up cursor-pointer"
+                      className="block p-6 rounded-2xl bg-card border border-border shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
                       <div className="flex items-start gap-4 mb-4">
@@ -549,15 +546,12 @@ export default function Study() {
                         ))}
                       </div>
 
-                      <Button variant="gradient" className="w-full pointer-events-none">
-                        Open {tool.title}
-                      </Button>
-                      <p className="mt-2 text-center text-sm text-muted-foreground">
-                        <span className="text-primary underline hover:text-primary/80 transition-colors">
-                          https://notebooklm.google/
-                        </span>
-                      </p>
-                    </a>
+                      <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer">
+                        <Button variant="gradient" className="w-full">
+                          Open {tool.title}
+                        </Button>
+                      </a>
+                    </div>
                   );
                 })}
               </div>
