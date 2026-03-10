@@ -552,6 +552,11 @@ export default function Study() {
                       <Button variant="gradient" className="w-full pointer-events-none">
                         Open {tool.title}
                       </Button>
+                      <p className="mt-2 text-center text-sm text-muted-foreground">
+                        <span className="text-primary underline hover:text-primary/80 transition-colors">
+                          https://notebooklm.google/
+                        </span>
+                      </p>
                     </a>
                   );
                 })}
