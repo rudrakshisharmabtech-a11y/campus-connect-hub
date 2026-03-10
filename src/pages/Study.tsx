@@ -551,6 +551,9 @@ export default function Study() {
                           Open {tool.title}
                         </Button>
                       </a>
+                      <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" className="block mt-2 text-center text-sm text-primary underline hover:text-primary/80 transition-colors">
+                        https://notebooklm.google.com
+                      </a>
                     </div>
                   );
                 })}
